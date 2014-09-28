@@ -8,18 +8,20 @@
 
 import UIKit
 
-class TweetsViewController: UIViewController {
+class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var tweets: [Tweet]?
 
+    @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tableView.dataSource = self
+        tableView.delegate   = self
+        
         // Do any additional setup after loading the view.
         TwitterClient.sharedInstance.homeTimeLineWithParams(nil, completion: {(tweets, error) -> () in
             self.tweets = tweets
-            println(tweets)
-            //reload tableView
+            self.tableView.reloadData()
         })
     }
 
@@ -32,6 +34,18 @@ class TweetsViewController: UIViewController {
     @IBAction func onLogout(sender: AnyObject) {
         User.currentUser?.logout()
     }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.tweets?.count ?? 0
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCellWithIdentifier("TweetCell") as TweetCell
+        var tweet = self.tweets?[indexPath.row]
+        cell.tweet = tweet
+        return cell
+    }
+
 
     /*
     // MARK: - Navigation

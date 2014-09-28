@@ -34,9 +34,6 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
                 parameters: params, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
                     //println("timeline : \(response)")
                     var tweets = Tweet.tweetsWithArray(response as [NSDictionary])
-                    for each in tweets {
-                        println("text : \(each.text), createdAt : \(each.createdAt)")
-                    }
                     completion(tweets: tweets, error: nil)
                 }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
                     println("error getting timeline")

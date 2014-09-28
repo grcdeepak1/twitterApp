@@ -24,6 +24,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-PrettyTimestamp.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-TSMessages.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,32 +42,37 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>15F25DDC136B499BB8161668</key>
+		<key>12CFD9D2058A4F02B7DCE505</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4104F2FCD54040BDA4C6B735</key>
+		<key>244E2DE3F9CC4F2AB24477DE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>531B500C06A4440CAABC1027</key>
+		<key>26E68A90387847FAA649028E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7DA87475FADF45B69A9683EC</key>
+		<key>488B0E25991F4E5D81090EEC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B06511C6109B4292A02AED1B</key>
+		<key>534D96F0E5DA41439B371B06</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D4C27060F0BB4DC085F58424</key>
+		<key>58DDE2EEBB194A0E9D1FF04E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>95EEB7ED7F8940BD8495BE53</key>
 		<dict>
 			<key>primary</key>
 			<true/>
