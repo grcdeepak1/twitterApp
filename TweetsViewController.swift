@@ -11,6 +11,7 @@ import UIKit
 class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var tweets: [Tweet]?
+    var refreshControl:UIRefreshControl!
 
     @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
@@ -18,11 +19,20 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.dataSource = self
         tableView.delegate   = self
         
+        var hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        hud.labelText = "loading .."
+        hud.show(true)
+        
         // Do any additional setup after loading the view.
         TwitterClient.sharedInstance.homeTimeLineWithParams(nil, completion: {(tweets, error) -> () in
             self.tweets = tweets
             self.tableView.reloadData()
+            MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
         })
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refersh")
+        self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView.addSubview(refreshControl)
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,15 +56,47 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         return cell
     }
 
+    func refresh(refreshControl : UIRefreshControl)
+    {
+        var hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        hud.labelText = "loading .."
+        hud.show(true)
+        
+        // Code to refresh table view
+        TwitterClient.sharedInstance.homeTimeLineWithParams(nil, completion: {(tweets, error) -> () in
+            self.tweets = tweets
+            self.tableView.reloadData()
+            self.refreshControl.endRefreshing()
+            MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
+        })
+        
+    }
 
-    /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+    
+    override func prepareForSegue(segue: (UIStoryboardSegue!), sender: AnyObject!) {
+        self.view.endEditing(true)
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if (segue.identifier == "detailSegue") {
+            var nav = segue.destinationViewController as UINavigationController
+            if nav.viewControllers[0] is DetailViewController {
+                var detVc = nav.viewControllers[0] as DetailViewController
+                let indexPath = self.tableView.indexPathForSelectedRow()?.row
+                // pass data to next view
+                detVc.tweet = self.tweets?[indexPath!]
+            }
+        } else if (segue.identifier == "newSegue") {
+            var nav = segue.destinationViewController as UINavigationController
+            if nav.viewControllers[0] is NewViewController {
+                var newVc = nav.viewControllers[0] as NewViewController
+                let indexPath = self.tableView.indexPathForSelectedRow()?.row
+                // pass data to next view
+                newVc.tweet = self.tweets?[indexPath!]
+            }
+            
+        }
     }
-    */
+
 
 }
