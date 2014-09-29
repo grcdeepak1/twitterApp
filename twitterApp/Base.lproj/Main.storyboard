@@ -49,7 +49,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1168" y="332"/>
+            <point key="canvasLocation" x="1360" y="-1064"/>
         </scene>
         <!--Home-->
         <scene sceneID="i2u-f2-4IU">
@@ -129,7 +129,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vhv-12-frb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2588" y="326"/>
+            <point key="canvasLocation" x="1378" y="502"/>
         </scene>
         <!--Tweet-->
         <scene sceneID="Zvy-s9-7a2">
@@ -227,21 +227,27 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XgR-KG-7ep" id="Qbl-Br-hEg">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="INi-Hc-Jyu">
-                                                    <rect key="frame" x="42" y="12" width="46" height="30"/>
-                                                    <state key="normal" title="Button">
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="INi-Hc-Jyu">
+                                                    <rect key="frame" x="42" y="12" width="16" height="22"/>
+                                                    <state key="normal" image="reply.png">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <segue destination="V5p-jk-3bi" kind="presentation" identifier="replySegue" id="Eun-5r-hqh"/>
+                                                    </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AxH-pd-Jua">
-                                                    <rect key="frame" x="109" y="12" width="46" height="30"/>
-                                                    <state key="normal" title="Button">
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AxH-pd-Jua">
+                                                    <rect key="frame" x="92" y="12" width="16" height="22"/>
+                                                    <state key="normal" image="retweet.png">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="onRetweet:" destination="YiS-Vn-j13" eventType="touchUpInside" id="hk6-lt-jHS"/>
+                                                    </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sv3-Ig-btM">
-                                                    <rect key="frame" x="178" y="12" width="31" height="30"/>
-                                                    <state key="normal" title="✩">
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sv3-Ig-btM">
+                                                    <rect key="frame" x="151" y="12" width="16" height="22"/>
+                                                    <state key="normal" image="favorite.png">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
@@ -271,7 +277,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5au-3n-WeN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4084" y="327"/>
+            <point key="canvasLocation" x="3028" y="-298"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WFJ-ht-L2R">
@@ -289,7 +295,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Yd-ZE-WLV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1918" y="326"/>
+            <point key="canvasLocation" x="1366" y="-278"/>
         </scene>
         <!--New View Controller-->
         <scene sceneID="UeQ-A4-fsE">
@@ -339,7 +345,11 @@
                                 <action selector="onCancel:" destination="dvQ-2w-CQ7" id="sYg-7s-0IL"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Tweet" id="3Zo-KI-VTi"/>
+                        <barButtonItem key="rightBarButtonItem" title="Tweet" id="3Zo-KI-VTi">
+                            <connections>
+                                <action selector="onTweet:" destination="dvQ-2w-CQ7" id="efb-ra-FgA"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="handleLabel" destination="UMq-Ey-uBI" id="xRc-Hl-Zn9"/>
@@ -349,7 +359,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iZK-EH-bC7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4084" y="-348"/>
+            <point key="canvasLocation" x="3028" y="502"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qqM-Ld-8gP">
@@ -368,7 +378,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mVB-AD-DNw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3272" y="332"/>
+            <point key="canvasLocation" x="2208" y="-278"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Zed-28-Uwb">
@@ -386,10 +396,16 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aei-W7-bdd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3272" y="-348"/>
+            <point key="canvasLocation" x="2208" y="502"/>
         </scene>
     </scenes>
     <resources>
         <image name="Twitter_logo_white.png" width="1139" height="926"/>
+        <image name="favorite.png" width="16" height="16"/>
+        <image name="reply.png" width="16" height="16"/>
+        <image name="retweet.png" width="16" height="16"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Eun-5r-hqh"/>
+    </inferredMetricsTieBreakers>
 </document>

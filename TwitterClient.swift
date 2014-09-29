@@ -78,42 +78,66 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         }
     }
     
-    func favoriteWithID(tweet_id: String, callback: (error: NSError!) -> Void) {
+    func favoriteWithID(tweet_id: String, callback: (response: AnyObject!, error: NSError!) -> Void) {
         sendPostRequest("1.1/favorites/create.json",
             parameters: [ "id": tweet_id ],
             callback: callback)
     }
     
-    func unfavoriteWithID(tweet_id: String, callback: (error: NSError!) -> Void) {
+    func unfavoriteWithID(tweet_id: String, callback: (response: AnyObject!, error: NSError!) -> Void) {
         sendPostRequest("1.1/favorites/destroy.json",
             parameters: [ "id": tweet_id ],
             callback: callback)
     }
-    
-    func sendPostRequest(endpoint: String, parameters: [String: String]!, callback: (error: NSError!) -> Void) {
-        POST(endpoint,
-            parameters: parameters,
-            success: {
-                // Success
-                (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
-                callback(error: nil)
-            },
-            failure: {
-                // Failure
-                (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
-                callback(error: error)
-        })
-    }
-    
-    func tweet(status: String, callback: (error: NSError!) -> Void) {
+    func tweet(status: String, callback: (response: AnyObject!, error: NSError!) -> Void) {
         sendPostRequest("1.1/statuses/update.json",
             parameters: [ "status": status ],
             callback: callback)
     }
     
-    func retweet(tweet_id: String, callback: (error: NSError!) -> Void) {
+    func retweet(tweet_id: String, callback: (response: AnyObject!, error: NSError!) -> Void) {
         sendPostRequest("1.1/statuses/retweet/\(tweet_id).json",
             parameters: nil,
             callback: callback)
+    }
+    func destroy(tweet_id: String, callback: (response: AnyObject!, error: NSError!) -> Void) {
+        sendPostRequest("1.1/statuses/destroy/\(tweet_id).json",
+            parameters: nil,
+            callback: callback)
+    }
+    func getRetweets(tweet_id: String, callback: (response: AnyObject!, error: NSError!) -> Void) {
+        sendPostRequest("1.1/statuses/retweets/\(tweet_id).json",
+            parameters: nil,
+            callback: callback)
+    }
+    
+    func sendPostRequest(endpoint: String, parameters: [String: String]!, callback: (response: AnyObject!, error: NSError!) -> Void) {
+        POST(endpoint,
+            parameters: parameters,
+            success: {
+                // Success
+                (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+                callback(response: response, error: nil)
+            },
+            failure: {
+                // Failure
+                (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                callback(response: nil, error: error)
+        })
+    }
+    
+    func sendGetRequest(endpoint: String, parameters: [String: String]!, callback: (response: AnyObject!, error: NSError!) -> Void) {
+        GET(endpoint,
+            parameters: parameters,
+            success: {
+                // Success
+                (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+                callback(response: response, error: nil)
+            },
+            failure: {
+                // Failure
+                (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                callback(response: nil, error: error)
+        })
     }
 }

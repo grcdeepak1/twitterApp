@@ -26,7 +26,10 @@ class NewViewController: UIViewController {
         // Do any additional setup after loading the view.
         println("In NewViewController : user :\(self.user?.name)")
         println("In NewViewController Current User from class : \(User.currentUser?.name)")
-        tweetTextView.becomeFirstResponder();
+        if let author_name = tweet?.user?.screenname {
+            tweetTextView.text = "@\(author_name) "
+        }
+        tweetTextView.becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,6 +38,20 @@ class NewViewController: UIViewController {
     }
     
 
+    @IBAction func onTweet(sender: AnyObject) {
+        if (self.tweetTextView.text != "" ) {
+            TwitterClient.sharedInstance.tweet(self.tweetTextView.text, callback: {(response, error) -> () in
+                if(error != nil) {
+                    println("Error on Posting Tweet")
+                    println(error)
+                } else {
+                    println(response)
+                    println("Tweet succeeded")
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }
+            })
+        }
+    }
     /*
     // MARK: - Navigation
 
