@@ -39,6 +39,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             case 0 :
                 //println(indexPath.row)
                 var cell = tableView.dequeueReusableCellWithIdentifier("detailViewCell") as DetailViewCell
+                println("Tweet ID:  Fav count : \(self.tweet.favorite_count)")
                 cell.tweet = self.tweet
                 return cell
             case 1:
@@ -58,6 +59,30 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         }
 
     }
+    
+    
+    @IBAction func onFavorite(sender: AnyObject) {
+        TwitterClient.sharedInstance.favoriteWithID(self.tweet.id_str!, callback: {(error) -> () in
+            if(error != nil) {
+                println("Tweet id : \(self.tweet.id_str!) : Error on Favorite")
+                TwitterClient.sharedInstance.unfavoriteWithID(self.tweet.id_str!, callback: {(error1) -> () in
+                    if(error1 != nil) {
+                        println("Tweet id : \(self.tweet.id_str!) : Error on Unfavorite")
+                    } else {
+                        //Increment the Favorite count in the current screen
+                        self.tweet.favorite_count = self.tweet.favorite_count! - 1
+                        println("Tweet id : \(self.tweet.id_str!) : Unfavorite of tweet succeeded")
+                        self.detTableView.reloadData()
+                    }
+                })
+            } else {
+                //Increment the Favorite count in the current screen
+                self.tweet.favorite_count = self.tweet.favorite_count! + 1
+                println("Tweet id : \(self.tweet.id_str!) : Favorite of tweet succeeded")
+                self.detTableView.reloadData()
+            }
+        })
+    }
 
     /*
     // MARK: - Navigation
@@ -68,5 +93,4 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         // Pass the selected object to the new view controller.
     }
     */
-
 }

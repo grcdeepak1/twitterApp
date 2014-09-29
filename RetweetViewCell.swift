@@ -14,8 +14,8 @@ class RetweetViewCell: UITableViewCell {
     
     var tweet : Tweet! {
         willSet(tweet) {
-            numRetweetsLabel.text = "25"
-            numFavLabel.text      = "32"
+            numRetweetsLabel.text = tweet?.retweet_count?.stringValue
+            numFavLabel.text      = tweet?.favorite_count?.stringValue
         }
     }
     

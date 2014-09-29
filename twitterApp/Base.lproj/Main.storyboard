@@ -244,6 +244,9 @@
                                                     <state key="normal" title="✩">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="onFavorite:" destination="YiS-Vn-j13" eventType="touchUpInside" id="7Ec-iE-mDt"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>

@@ -77,4 +77,43 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
                 self.loginCompletion? (user: nil, error: error)
         }
     }
+    
+    func favoriteWithID(tweet_id: String, callback: (error: NSError!) -> Void) {
+        sendPostRequest("1.1/favorites/create.json",
+            parameters: [ "id": tweet_id ],
+            callback: callback)
+    }
+    
+    func unfavoriteWithID(tweet_id: String, callback: (error: NSError!) -> Void) {
+        sendPostRequest("1.1/favorites/destroy.json",
+            parameters: [ "id": tweet_id ],
+            callback: callback)
+    }
+    
+    func sendPostRequest(endpoint: String, parameters: [String: String]!, callback: (error: NSError!) -> Void) {
+        POST(endpoint,
+            parameters: parameters,
+            success: {
+                // Success
+                (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+                callback(error: nil)
+            },
+            failure: {
+                // Failure
+                (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                callback(error: error)
+        })
+    }
+    
+    func tweet(status: String, callback: (error: NSError!) -> Void) {
+        sendPostRequest("1.1/statuses/update.json",
+            parameters: [ "status": status ],
+            callback: callback)
+    }
+    
+    func retweet(tweet_id: String, callback: (error: NSError!) -> Void) {
+        sendPostRequest("1.1/statuses/retweet/\(tweet_id).json",
+            parameters: nil,
+            callback: callback)
+    }
 }
