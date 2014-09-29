@@ -11,6 +11,7 @@ import UIKit
 class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var tweets: [Tweet]?
+    var user: User?
     var refreshControl:UIRefreshControl!
 
     @IBOutlet var tableView: UITableView!
@@ -18,7 +19,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate   = self
-        
+        println("In Tweets ViewController : User : \(user?.name)")
         var hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         hud.labelText = "loading .."
         hud.show(true)
@@ -92,7 +93,8 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
                 var newVc = nav.viewControllers[0] as NewViewController
                 let indexPath = self.tableView.indexPathForSelectedRow()?.row
                 // pass data to next view
-                newVc.tweet = self.tweets?[indexPath!]
+                println("In Tweets Segue to newVc: user : \(user?.name)")
+                newVc.user = self.user
             }
             
         }

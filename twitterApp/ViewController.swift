@@ -11,6 +11,8 @@ import UIKit
 
 
 class ViewController: UIViewController {
+    
+    var user: User!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +29,7 @@ class ViewController: UIViewController {
         TwitterClient.sharedInstance.loginWithCompletion() {
             (user: User?, error: NSError?) in
             if user != nil {
+                self.user = user
                 //perform segue
                 self.performSegueWithIdentifier("loginSegue", sender: self)
             } else {
@@ -36,6 +39,21 @@ class ViewController: UIViewController {
     }
     
     
+    override func prepareForSegue(segue: (UIStoryboardSegue!), sender: AnyObject!) {
+        self.view.endEditing(true)
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        if (segue.identifier == "loginSegue") {
+            var nav = segue.destinationViewController as UINavigationController
+            if nav.viewControllers[0] is TweetsViewController {
+                var tweetsVc = nav.viewControllers[0] as TweetsViewController
+                // pass data to next view
+                println("In viewController : User : \(user?.name)")
+                tweetsVc.user = user?
+            }
+            
+        }
+    }
     
     //MARK - HelperFunctions
     func UIColorFromRGB(rgbValue: UInt) -> UIColor {

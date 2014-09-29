@@ -10,14 +10,23 @@ import UIKit
 
 class NewViewController: UIViewController {
     var tweet : Tweet!
+    var user: User!
+    
+    @IBOutlet var nameLabel: UILabel!
+    
+    @IBOutlet var handleLabel: UILabel!
+    
+    @IBOutlet var tweetTextView: UITextView!
     @IBAction func onCancel(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        nameLabel.text = User.currentUser?.name
         // Do any additional setup after loading the view.
-        println("I am in NewViewController : \(self.tweet?.user?.name)")
+        println("In NewViewController : user :\(self.user?.name)")
+        println("In NewViewController Current User from class : \(User.currentUser?.name)")
+        tweetTextView.becomeFirstResponder();
     }
 
     override func didReceiveMemoryWarning() {
