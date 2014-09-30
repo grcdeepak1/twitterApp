@@ -11,7 +11,7 @@ import UIKit
 class RetweetViewCell: UITableViewCell {
 
     @IBOutlet var numRetweetsLabel: UILabel!
-    
+    @IBOutlet var numFavLabel: UILabel!
     var tweet : Tweet! {
         willSet(tweet) {
             numRetweetsLabel.text = tweet?.retweet_count?.stringValue
@@ -19,7 +19,7 @@ class RetweetViewCell: UITableViewCell {
         }
     }
     
-    @IBOutlet var numFavLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

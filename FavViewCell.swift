@@ -11,6 +11,27 @@ import UIKit
 class FavViewCell: UITableViewCell {
 
     
+    @IBOutlet var favButton: UIButton!
+    
+    @IBOutlet var retweetButton: UIButton!
+    var tweet : Tweet! {
+        willSet(tweet) {
+            println("In Fav cell Favorited : \(tweet.favorited)")
+            if(tweet.favorited == 0) {
+                favButton.setImage(UIImage(named: "favorite.png"), forState: .Normal)
+            } else {
+                favButton.setImage(UIImage(named: "favorite_on.png"), forState: .Normal)
+            }
+            if(tweet.retweeted == true) {
+                retweetButton.setImage(UIImage(named: "retweet_on.png"), forState: .Normal)
+            } else {
+                retweetButton.setImage(UIImage(named: "retweet.png"), forState: .Normal)
+            }
+            
+            
+            
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

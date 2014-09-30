@@ -19,6 +19,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate   = self
+        self.navigationController?.navigationBar.barTintColor = UIColorFromRGB(0x55ACEE)
         println("In Tweets ViewController : User : \(user?.name)")
         var hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         hud.labelText = "loading .."

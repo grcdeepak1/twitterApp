@@ -19,6 +19,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         detTableView.dataSource = self
         detTableView.delegate   = self
         detTableView.tableFooterView = UIView()
+        self.navigationController?.navigationBar.barTintColor = UIColorFromRGB(0x55ACEE)
         
         // Do any additional setup after loading the view.
     }
@@ -41,6 +42,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
                 //println(indexPath.row)
                 var cell = tableView.dequeueReusableCellWithIdentifier("detailViewCell") as DetailViewCell
                 println("Tweet ID:  Fav count : \(self.tweet.favorite_count)")
+                println("In Det tweet Favorited : \(tweet.favorited)")
                 cell.tweet = self.tweet
                 return cell
             case 1:
@@ -51,6 +53,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             case 2:
             var cell = tableView.dequeueReusableCellWithIdentifier("favViewCell") as FavViewCell
             //println(indexPath.row)
+                cell.tweet = self.tweet
             return cell
             default:
                 println("error")
@@ -78,6 +81,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             } else {
                 //println(response)
                 self.tweet.retweet_count = self.tweet.retweet_count! + 1
+                self.tweet.retweeted = true
                 println("Tweet id : \(self.tweet.id_str!) : Retweet succeeded")
                 sender.setImage(UIImage(named: "retweet_on.png"), forState: .Normal)
                 self.detTableView.reloadData()
@@ -95,7 +99,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
                     } else {
                         //Increment the Favorite count in the current screen
                         self.tweet.favorite_count = self.tweet.favorite_count! - 1
-                        sender.setImage(UIImage(named: "favorite.png"), forState: .Normal)
+                        self.tweet.favorited = 0
                         println("Tweet id : \(self.tweet.id_str!) : Unfavorite of tweet succeeded")
                         self.detTableView.reloadData()
                     }
@@ -103,7 +107,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             } else {
                 //Increment the Favorite count in the current screen
                 self.tweet.favorite_count = self.tweet.favorite_count! + 1
-                sender.setImage(UIImage(named: "favorite_on.png"), forState: .Normal)
+                self.tweet.favorited = 1
                 println("Tweet id : \(self.tweet.id_str!) : Favorite of tweet succeeded")
                 self.detTableView.reloadData()
             }

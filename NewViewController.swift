@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewViewController: UIViewController {
+class NewViewController: UIViewController, UITextViewDelegate {
     var tweet : Tweet!
     var user: User!
     
@@ -17,11 +17,15 @@ class NewViewController: UIViewController {
     @IBOutlet var handleLabel: UILabel!
     
     @IBOutlet var tweetTextView: UITextView!
+    
+    var countLabel: UILabel!
+    
     @IBAction func onCancel(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.barTintColor = UIColorFromRGB(0xF5F8FA)
         nameLabel.text = User.currentUser?.name
         // Do any additional setup after loading the view.
         println("In NewViewController : user :\(self.user?.name)")
@@ -29,6 +33,15 @@ class NewViewController: UIViewController {
         if let author_name = tweet?.user?.screenname {
             tweetTextView.text = "@\(author_name) "
         }
+        tweetTextView.delegate = self
+        
+        var navbar = navigationController?.navigationBar
+        countLabel = UILabel(frame: CGRectMake(280, 16, 40, 30))
+        countLabel.font = UIFont(name: "Helvetica", size: 12)
+        countLabel.text = "140"
+        countLabel.sizeToFit()
+        navbar?.addSubview(countLabel)
+        
         tweetTextView.becomeFirstResponder()
     }
 
@@ -44,6 +57,11 @@ class NewViewController: UIViewController {
                 if(error != nil) {
                     println("Error on Posting Tweet")
                     println(error)
+                    UIAlertView(
+                        title: "Error",
+                        message: "Your tweet could not be sent. Please try again later.",
+                        delegate: self,
+                        cancelButtonTitle: "Dismiss").show()
                 } else {
                     println(response)
                     println("Tweet succeeded")
@@ -52,6 +70,13 @@ class NewViewController: UIViewController {
             })
         }
     }
+    
+    func textViewDidChange(textView: UITextView) {
+        var n = 140 - countElements(textView.text)
+        countLabel.text = "\(n)"
+    }
+    
+    
     /*
     // MARK: - Navigation
 

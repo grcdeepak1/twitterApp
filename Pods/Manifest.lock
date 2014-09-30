@@ -28,6 +28,7 @@ PODS:
   - PrettyTimestamp (1.1)
   - TSMessages (0.9.10):
     - HexColors
+  - TTTAttributedLabel (1.10.1)
 
 DEPENDENCIES:
   - AFNetworking
@@ -36,6 +37,7 @@ DEPENDENCIES:
   - MBProgressHUD (~> 0.5)
   - PrettyTimestamp
   - TSMessages
+  - TTTAttributedLabel
 
 SPEC CHECKSUMS:
   AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
@@ -44,5 +46,6 @@ SPEC CHECKSUMS:
   MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
   PrettyTimestamp: ba24078af51cf06ec741cd9660d8dea25166ae06
   TSMessages: 8598a0645e9d54847f6e5f3b070bef39c493bbf8
+  TTTAttributedLabel: 94bb04f1e005616002dd2cee0262a0082e533627
 
 COCOAPODS: 0.33.1

@@ -113,11 +113,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="fcb-SV-ayy">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="3F9-Xg-Yt0">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="onLogout:" destination="Of1-bE-746" id="Pmc-Qq-jiJ"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="New" id="UmG-nQ-KNF">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="V5p-jk-3bi" kind="presentation" identifier="newSegue" id="hfo-ba-eEf"/>
                             </connections>
@@ -256,6 +258,10 @@
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="favButton" destination="sv3-Ig-btM" id="vhA-dN-nS5"/>
+                                            <outlet property="retweetButton" destination="AxH-pd-Jua" id="fXK-mm-8PA"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -406,6 +412,6 @@
         <image name="retweet.png" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Eun-5r-hqh"/>
+        <segue reference="hfo-ba-eEf"/>
     </inferredMetricsTieBreakers>
 </document>
