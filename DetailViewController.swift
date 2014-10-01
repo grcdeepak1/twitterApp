@@ -19,6 +19,8 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         detTableView.dataSource = self
         detTableView.delegate   = self
         detTableView.tableFooterView = UIView()
+        detTableView.rowHeight = UITableViewAutomaticDimension
+        detTableView.estimatedRowHeight = 120.0
         self.navigationController?.navigationBar.barTintColor = UIColorFromRGB(0x55ACEE)
         
         // Do any additional setup after loading the view.

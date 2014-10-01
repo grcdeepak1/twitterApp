@@ -12,6 +12,7 @@ class NewViewController: UIViewController, UITextViewDelegate {
     var tweet : Tweet!
     var user: User!
     
+    @IBOutlet var profileImage: UIImageView!
     @IBOutlet var nameLabel: UILabel!
     
     @IBOutlet var handleLabel: UILabel!
@@ -27,6 +28,22 @@ class NewViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         self.navigationController?.navigationBar.barTintColor = UIColorFromRGB(0xF5F8FA)
         nameLabel.text = User.currentUser?.name
+        handleLabel.text = User.currentUser?.screenname
+        if let url = User.currentUser?.profileImageUrl {
+            //profileImage.setImageWithURL(NSURL(string: url))
+            var request = NSURLRequest(URL: NSURL(string: url))
+            profileImage.setImageWithURLRequest(request, placeholderImage: nil ,
+                success: { (request, response, image) -> Void in
+                    //println(response)
+                    self.profileImage.image = image
+                    var layer = self.profileImage.layer as CALayer
+                    layer.cornerRadius = 8.0
+                    layer.masksToBounds = true
+                }, failure: { (request, response, error) -> Void in
+                    println(error)
+            })
+        }
+        
         // Do any additional setup after loading the view.
         println("In NewViewController : user :\(self.user?.name)")
         println("In NewViewController Current User from class : \(User.currentUser?.name)")

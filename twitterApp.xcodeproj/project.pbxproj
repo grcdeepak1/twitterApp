@@ -33,6 +33,7 @@
 		008BBF7419D91D7700BFE785 /* favorite.png in Resources */ = {isa = PBXBuildFile; fileRef = 008BBF6E19D91D7700BFE785 /* favorite.png */; };
 		008BBF7519D91D7700BFE785 /* favorite_hover.png in Resources */ = {isa = PBXBuildFile; fileRef = 008BBF6F19D91D7700BFE785 /* favorite_hover.png */; };
 		008BBF7619D91D7700BFE785 /* favorite_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 008BBF7019D91D7700BFE785 /* favorite_on.png */; };
+		008BBF7819DBC4FD00BFE785 /* launchScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 008BBF7719DBC4FD00BFE785 /* launchScreen.png */; };
 		ACD6615456924821B99CEB11 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39FA28BD678C446EAC0A41E7 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +79,7 @@
 		008BBF6E19D91D7700BFE785 /* favorite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorite.png; sourceTree = "<group>"; };
 		008BBF6F19D91D7700BFE785 /* favorite_hover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorite_hover.png; sourceTree = "<group>"; };
 		008BBF7019D91D7700BFE785 /* favorite_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorite_on.png; sourceTree = "<group>"; };
+		008BBF7719DBC4FD00BFE785 /* launchScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchScreen.png; sourceTree = "<group>"; };
 		39FA28BD678C446EAC0A41E7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		54B0FE4A06F64621A2EAD213 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -195,6 +197,7 @@
 		008BBF5719D7DFA300BFE785 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				008BBF7719DBC4FD00BFE785 /* launchScreen.png */,
 				008BBF6B19D91D7700BFE785 /* retweet_hover.png */,
 				008BBF6C19D91D7700BFE785 /* reply.png */,
 				008BBF6D19D91D7700BFE785 /* reply_hover.png */,
@@ -318,6 +321,7 @@
 				008BBF6919D91CB700BFE785 /* retweet.png in Resources */,
 				0026168919D770A900AD1FCA /* Main.storyboard in Resources */,
 				0026168E19D770A900AD1FCA /* LaunchScreen.xib in Resources */,
+				008BBF7819DBC4FD00BFE785 /* launchScreen.png in Resources */,
 				0026168B19D770A900AD1FCA /* Images.xcassets in Resources */,
 				008BBF7119D91D7700BFE785 /* retweet_hover.png in Resources */,
 				008BBF7619D91D7700BFE785 /* favorite_on.png in Resources */,
