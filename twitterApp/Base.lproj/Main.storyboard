@@ -80,7 +80,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I have Seen the Future of News Papers http://www.google.com" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgc-rA-jPW">
-                                                    <rect key="frame" x="77" y="33" width="480" height="15"/>
+                                                    <rect key="frame" x="77" y="33" width="480" height="53"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -118,7 +118,7 @@
                                                 <constraint firstItem="rOD-C6-Ves" firstAttribute="leading" secondItem="jEG-db-dA9" secondAttribute="trailing" constant="8" id="LIO-Lx-5ha"/>
                                                 <constraint firstItem="qgc-rA-jPW" firstAttribute="leading" secondItem="sZ2-Kd-0dW" secondAttribute="trailing" constant="8" id="QeK-T4-F1L"/>
                                                 <constraint firstAttribute="trailing" secondItem="Cey-41-XNH" secondAttribute="trailing" constant="5" id="Ug7-9E-mKl"/>
-                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="qgc-rA-jPW" secondAttribute="bottom" constant="10" id="e9x-VE-mhN"/>
+                                                <constraint firstAttribute="bottom" secondItem="qgc-rA-jPW" secondAttribute="bottom" constant="20" id="e9x-VE-mhN"/>
                                                 <constraint firstItem="sZ2-Kd-0dW" firstAttribute="top" secondItem="OOB-Fn-fBo" secondAttribute="top" constant="10" id="fRG-bB-OQw"/>
                                                 <constraint firstItem="jEG-db-dA9" firstAttribute="top" secondItem="OOB-Fn-fBo" secondAttribute="top" constant="10" id="gFe-Un-kxG"/>
                                                 <constraint firstItem="Cey-41-XNH" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rOD-C6-Ves" secondAttribute="trailing" constant="8" id="wop-wn-Voz"/>
@@ -537,6 +537,6 @@
         <image name="retweet.png" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Eun-5r-hqh"/>
+        <segue reference="hfo-ba-eEf"/>
     </inferredMetricsTieBreakers>
 </document>

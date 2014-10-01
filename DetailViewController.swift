@@ -43,8 +43,8 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             case 0 :
                 //println(indexPath.row)
                 var cell = tableView.dequeueReusableCellWithIdentifier("detailViewCell") as DetailViewCell
-                println("Tweet ID:  Fav count : \(self.tweet.favorite_count)")
-                println("In Det tweet Favorited : \(tweet.favorited)")
+                //println("Tweet ID:  Fav count : \(self.tweet.favorite_count)")
+                //println("In Det tweet Favorited : \(tweet.favorited)")
                 cell.tweet = self.tweet
                 return cell
             case 1:
@@ -58,8 +58,8 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
                 cell.tweet = self.tweet
             return cell
             default:
-                println("error")
-                println(indexPath.row)
+                //println("error")
+                //println(indexPath.row)
                 var cell = tableView.dequeueReusableCellWithIdentifier("detailViewCell") as DetailViewCell
                 return cell
         }

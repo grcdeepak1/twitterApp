@@ -38,6 +38,15 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview(refreshControl)
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        TwitterClient.sharedInstance.homeTimeLineWithParams(nil, completion: {(tweets, error) -> () in
+            self.tweets = tweets
+            self.tableView.reloadData()
+            self.refreshControl.endRefreshing()
+            MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
+        })
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -57,7 +66,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         var cell = tableView.dequeueReusableCellWithIdentifier("TweetCell") as TweetCell
         var tweet = self.tweets?[indexPath.row]
         cell.tweet = tweet
-        cell.contentView.layoutSubviews()
+        //cell.contentView.layoutSubviews()
         return cell
     }
 
