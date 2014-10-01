@@ -16,6 +16,7 @@ Implemented User Stories
 - [x] Optional: Unfavorite will decrement the retweet and favorite count.
 - [x] Optional: Replies should be prefixed with the username and the Reply_id should be set when posting the tweet
 - [ ] Optional: User can load more tweets once they reach the bottom of the feed using infinite loading similar to the actual Twitter client.
+- [ ] Optional: After creating a new tweet, a user should be able to view it in the timeline immediately without refetching the timeline from the network.
 
 Time Taken : 20 Hrs
 
