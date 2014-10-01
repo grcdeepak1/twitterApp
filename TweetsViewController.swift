@@ -19,6 +19,8 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate   = self
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 120.0
         self.navigationController?.navigationBar.barTintColor = UIColorFromRGB(0x55ACEE)
         println("In Tweets ViewController : User : \(user?.name)")
         var hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
@@ -55,6 +57,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         var cell = tableView.dequeueReusableCellWithIdentifier("TweetCell") as TweetCell
         var tweet = self.tweets?[indexPath.row]
         cell.tweet = tweet
+        cell.contentView.layoutSubviews()
         return cell
     }
 
