@@ -11,7 +11,7 @@ import UIKit
 class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var tweets: [Tweet]?
-    var user: User?
+    var user = User.currentUser?
     var refreshControl:UIRefreshControl!
 
     @IBOutlet var tableView: UITableView!

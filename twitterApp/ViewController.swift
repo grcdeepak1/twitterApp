@@ -43,6 +43,7 @@ class ViewController: UIViewController {
         self.view.endEditing(true)
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        /*
         if (segue.identifier == "loginSegue") {
             var nav = segue.destinationViewController as UINavigationController
             if nav.viewControllers[0] is TweetsViewController {
@@ -52,7 +53,8 @@ class ViewController: UIViewController {
                 tweetsVc.user = user?
             }
             
-        }
+        }*/
+
     }
     
     //MARK - HelperFunctions

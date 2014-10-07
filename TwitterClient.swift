@@ -41,6 +41,20 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
                     completion(tweets: nil, error: error)
             })
     }
+    
+    func mentionsWithParams(params: NSDictionary?,
+        completion: (tweets: [Tweet]?, error: NSError?) -> ()) {
+            GET("1.1/statuses/user_timeline.json" ,
+                parameters: params, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+                    println("mentions : \(response)")
+                    var tweets = Tweet.tweetsWithArray(response as [NSDictionary])
+                    completion(tweets: tweets, error: nil)
+                }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                    println("error getting timeline")
+                    //self.loginCompletion? (user: nil, error: error)
+                    completion(tweets: nil, error: error)
+            })
+    }
 
     func loginWithCompletion(completion: (user: User?, error: NSError?) -> ()) {
         loginCompletion = completion

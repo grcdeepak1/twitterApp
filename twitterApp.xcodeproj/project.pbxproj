@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		000480C519E1C7D500EB2E06 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000480C419E1C7D500EB2E06 /* ProfileViewController.swift */; };
 		0026168419D770A900AD1FCA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0026168319D770A900AD1FCA /* AppDelegate.swift */; };
 		0026168619D770A900AD1FCA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0026168519D770A900AD1FCA /* ViewController.swift */; };
 		0026168919D770A900AD1FCA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0026168719D770A900AD1FCA /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 		008BBF7519D91D7700BFE785 /* favorite_hover.png in Resources */ = {isa = PBXBuildFile; fileRef = 008BBF6F19D91D7700BFE785 /* favorite_hover.png */; };
 		008BBF7619D91D7700BFE785 /* favorite_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 008BBF7019D91D7700BFE785 /* favorite_on.png */; };
 		008BBF7819DBC4FD00BFE785 /* launchScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 008BBF7719DBC4FD00BFE785 /* launchScreen.png */; };
+		00ED02B019E0757800C3A8E6 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ED02AF19E0757800C3A8E6 /* ContainerViewController.swift */; };
 		ACD6615456924821B99CEB11 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39FA28BD678C446EAC0A41E7 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		000480C419E1C7D500EB2E06 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0026167E19D770A900AD1FCA /* twitterApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = twitterApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0026168219D770A900AD1FCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0026168319D770A900AD1FCA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +83,7 @@
 		008BBF6F19D91D7700BFE785 /* favorite_hover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorite_hover.png; sourceTree = "<group>"; };
 		008BBF7019D91D7700BFE785 /* favorite_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorite_on.png; sourceTree = "<group>"; };
 		008BBF7719DBC4FD00BFE785 /* launchScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchScreen.png; sourceTree = "<group>"; };
+		00ED02AF19E0757800C3A8E6 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		39FA28BD678C446EAC0A41E7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		54B0FE4A06F64621A2EAD213 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -186,10 +190,12 @@
 		002616B019D7A18400AD1FCA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				00ED02AF19E0757800C3A8E6 /* ContainerViewController.swift */,
 				0026168519D770A900AD1FCA /* ViewController.swift */,
 				002616B119D7A1B400AD1FCA /* TweetsViewController.swift */,
 				008BBF5D19D8A73300BFE785 /* DetailViewController.swift */,
 				008BBF6519D8CDBD00BFE785 /* NewViewController.swift */,
+				000480C419E1C7D500EB2E06 /* ProfileViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -378,6 +384,7 @@
 			files = (
 				008BBF6419D8C55C00BFE785 /* FavViewCell.swift in Sources */,
 				008BBF5E19D8A73300BFE785 /* DetailViewController.swift in Sources */,
+				00ED02B019E0757800C3A8E6 /* ContainerViewController.swift in Sources */,
 				0026168619D770A900AD1FCA /* ViewController.swift in Sources */,
 				002616A819D771D500AD1FCA /* TwitterClient.swift in Sources */,
 				0026168419D770A900AD1FCA /* AppDelegate.swift in Sources */,
@@ -387,6 +394,7 @@
 				008BBF6219D8BF6800BFE785 /* RetweetViewCell.swift in Sources */,
 				008BBF6619D8CDBD00BFE785 /* NewViewController.swift in Sources */,
 				008BBF6019D8A86D00BFE785 /* DetailViewCell.swift in Sources */,
+				000480C519E1C7D500EB2E06 /* ProfileViewController.swift in Sources */,
 				002616AD19D784FA00AD1FCA /* User.swift in Sources */,
 				002616AA19D784A900AD1FCA /* swiftyJSON.swift in Sources */,
 			);
