@@ -30,6 +30,9 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         // Do any additional setup after loading the view.
         TwitterClient.sharedInstance.homeTimeLineWithParams(nil, completion: {(tweets, error) -> () in
             self.tweets = tweets
+            if (error != nil) {
+                println(error)
+            }
             self.tableView.reloadData()
             MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
         })
@@ -40,12 +43,13 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     override func viewDidAppear(animated: Bool) {
+        /*
         TwitterClient.sharedInstance.homeTimeLineWithParams(nil, completion: {(tweets, error) -> () in
             self.tweets = tweets
             self.tableView.reloadData()
             self.refreshControl.endRefreshing()
             MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
-        })
+        }) */
     }
 
     override func didReceiveMemoryWarning() {

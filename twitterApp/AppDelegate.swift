@@ -22,17 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if User.currentUser != nil {
             //Go to home screen
             println("current user detected: \(User.currentUser?.name)")
-            var vc = storyboard.instantiateViewControllerWithIdentifier("ContainerNavController") as UIViewController
-            window?.rootViewController = vc
-        }
-
-        
-        if User.currentUser != nil {
-            //Go to home screen
-            println("current user detected: \(User.currentUser?.name)")
             var vc = storyboard.instantiateViewControllerWithIdentifier("TweetsNavigationController") as UIViewController
             window?.rootViewController = vc
-        }*/
+        } */
         return true
         
     }
