@@ -8,10 +8,14 @@
 
 import UIKit
 
+protocol MentionsViewDelegate {
+    func MentionsViewRequested(value: Bool) -> Void
+}
+
 class ContainerViewController: UIViewController {
     
     @IBOutlet var fakeNavbarView: UIView!
-    
+    var delegate: MentionsViewDelegate?
     @IBOutlet var contentView: UIView!
     var viewControllers: [UIViewController] = [TweetsViewController(nibName: nil, bundle: nil)]
     var homeTimelineVC: UIViewController?
@@ -54,6 +58,7 @@ class ContainerViewController: UIViewController {
     
     @IBOutlet var profileButton: UIButton!
 
+    @IBOutlet var mentionsButton: UIButton!
     
     @IBAction func onButtonTap(sender: UIButton) {
         if sender == someButton {
@@ -63,6 +68,12 @@ class ContainerViewController: UIViewController {
         } else if sender == profileButton {
             var profilePageVC = storyboard1.instantiateViewControllerWithIdentifier("ProfileNavController") as? UIViewController
             self.activeViewController = profilePageVC
+        } else if sender == mentionsButton {
+            println("Mentions button pressed")
+            delegate?.MentionsViewRequested(true)
+            var profilePageVC = storyboard1.instantiateViewControllerWithIdentifier("ProfileNavController") as? UIViewController
+            self.activeViewController = profilePageVC
+            
         }
         UIView.animateWithDuration(0.35, animations: { () -> Void in
             self.contentViewXConstraint.constant = 0

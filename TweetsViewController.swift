@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TweetCellDelegate {
     
     var tweets: [Tweet]?
     var user = User.currentUser?
@@ -69,6 +69,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("TweetCell") as TweetCell
         var tweet = self.tweets?[indexPath.row]
+        cell.delegate = self
         cell.tweet = tweet
         //cell.contentView.layoutSubviews()
         return cell
@@ -102,6 +103,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
                 var detVc = nav.viewControllers[0] as DetailViewController
                 let indexPath = self.tableView.indexPathForSelectedRow()?.row
                 // pass data to next view
+                //println("indexPath : \(indexPath)")
                 detVc.tweet = self.tweets?[indexPath!]
             }
         } else if (segue.identifier == "newSegue") {
@@ -114,8 +116,16 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
                 newVc.user = self.user
             }
             
+        } else if ( segue.identifier == "profileSegue") {
+            var nav = segue.destinationViewController as UINavigationController
+            if nav.viewControllers[0] is ProfileViewController {
+                var newVc = nav.viewControllers[0] as ProfileViewController
+                newVc.newUser = sender as? User
+            }
         }
     }
-
-
+    
+    func TweetCellImageButton(user: User) {
+        self.performSegueWithIdentifier("profileSegue", sender: user)
+    }
 }

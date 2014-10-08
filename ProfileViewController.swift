@@ -8,11 +8,15 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
-
+class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,  MentionsViewDelegate {
+    
     var tweets: [Tweet]?
     var user = User.currentUser?
+    var current_user: User?
+    var newUser: User?
     var refreshControl:UIRefreshControl!
+    var containerVC: ContainerViewController!
+    var mentionView: Bool?
     
     @IBOutlet var profileImage: UIImageView!
     @IBOutlet var profileName: UILabel!
@@ -42,11 +46,22 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.delegate   = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120.0
+        
+        var storyboard = UIStoryboard(name: "Main", bundle: nil)
+        containerVC = storyboard.instantiateViewControllerWithIdentifier("ContainerViewController") as ContainerViewController
+        containerVC.delegate = self
+        
         self.navigationController?.navigationBar.barTintColor = UIColorFromRGB(0x55ACEE)
+        
+        if (newUser != nil) {
+                current_user = self.newUser
+        } else {
+                current_user = User.currentUser
+        }
         // Do any additional setup after loading the view.
-        profileName.text = User.currentUser?.name
-        profileScreenname.text = "@\((User.currentUser?.screenname)!)"
-        if let url = User.currentUser?.profileImageUrl {
+        profileName.text = current_user?.name
+        profileScreenname.text = "@\((current_user?.screenname)!)"
+        if let url = current_user?.profileImageUrl {
             var request = NSURLRequest(URL: NSURL(string: url))
             profileImage.setImageWithURLRequest(request, placeholderImage: nil ,
                 success: { (request, response, image) -> Void in
@@ -59,12 +74,12 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                     println(error)
             })
         }
-        if let BGurl = User.currentUser?.profileBackgroundImageUrl {
+        if let BGurl = current_user?.profileBackgroundImageUrl {
             profileBGImage.setImageWithURL(NSURL(string: BGurl))
         }
-        numTweets.text    = User.currentUser?.numTweets?.stringValue
-        numFollowers.text = User.currentUser?.numFollowers?.stringValue
-        numFollowing.text = User.currentUser?.numFollowing?.stringValue
+        numTweets.text    = current_user?.numTweets?.stringValue
+        numFollowers.text = current_user?.numFollowers?.stringValue
+        numFollowing.text = current_user?.numFollowing?.stringValue
         
         var boxWidth = profileHeaderView.frame.width/3
         TweetsViewWidthConstraint.constant = boxWidth as CGFloat
@@ -79,17 +94,34 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         hud.show(true)
         
         // Do any additional setup after loading the view.
-        TwitterClient.sharedInstance.userTimeLineWithParams(nil, completion: {(tweets, error) -> () in
-            self.tweets = tweets
-            self.tableView.reloadData()
-            MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
-        })
+        //var params = [ "include_rts" : true , "trim_user" : false]
+        var params: [String:String] = [String:String]()
+        params["screen_name"] = current_user?.screenname
+        if (self.mentionView == nil ) {
+            TwitterClient.sharedInstance.userTimeLineWithParams(params, completion: {(tweets, error) -> () in
+                self.tweets = tweets
+                self.tableView.reloadData()
+                MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
+            })
+        } else {
+            println("calling mentionsWithParams")
+            TwitterClient.sharedInstance.mentionsWithParams(params, completion: {(tweets, error) -> () in
+                self.tweets = tweets
+                self.tableView.reloadData()
+                MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
+            })
+        }
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refersh")
         self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview(refreshControl)
 
         
+    }
+    
+    
+    @IBAction func onCancel(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -121,6 +153,13 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             self.refreshControl.endRefreshing()
             MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
         })
+    }
+    
+    func MentionsViewRequested(value: Bool) -> Void {
+        println("Inside MentionsViewRequested delegate")
+        if(value == true) {
+            self.mentionView = true
+        }
     }
 
     /*

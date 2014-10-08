@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol TweetCellDelegate {
+    func TweetCellImageButton(user: User) -> Void
+}
+
 class TweetCell: UITableViewCell {
+
+    var delegate: TweetCellDelegate?
 
 
     
@@ -17,6 +23,8 @@ class TweetCell: UITableViewCell {
     @IBOutlet var tweetLabel: UILabel!
     @IBOutlet var timeAgoLabel: UILabel!
     @IBOutlet var profileImage: UIImageView!
+    
+
     
     var tweet : Tweet! {
         willSet(tweet) {
@@ -39,9 +47,19 @@ class TweetCell: UITableViewCell {
                     println(error)
                 })
             }
+            
+            var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "onCustomTap:")
+            tapGestureRecognizer.numberOfTapsRequired = 1;
+            tapGestureRecognizer.delegate = self
+            profileImage.addGestureRecognizer(tapGestureRecognizer)
         }
     }
     
+    func onCustomTap(tapGestureRecognizer: UITapGestureRecognizer) {
+        println("tap recognized")
+        delegate?.TweetCellImageButton((tweet?.user)!)
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
