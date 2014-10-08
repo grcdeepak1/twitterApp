@@ -20,8 +20,29 @@ Implemented User Stories
 
 Time Taken : 20 Hrs
 
+Twitter Redux
+===============
+
+Hamburger menu
+--------------
+- [x] Dragging anywhere in the view will reveal the sliding menu.
+- [x] The menu includes links to your profile, the home timeline, and the mentions view.
+- [x] Contains the user header view
+
+Profile page
+------------
+- [x] Contains a section with the users basic stats: # tweets, # following, # followers
+- [ ] Implement the paging view for the user description.
+- [ ] As the paging view moves, increase the opacity of the background screen. See the actual Twitter app for this effect
+- [ ] Pulling down the profile page should blur and resize the header image.
+
+Home Timeline
+-------------
+- [x] Tapping on a user image will bring up that user's profile page
+
 Screen Capture
 --------------
 
 
 ![twitter App](twitterApp.gif)
+![twitter App] (twitterAppRedux.gif)
