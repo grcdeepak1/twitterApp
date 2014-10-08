@@ -82,7 +82,7 @@
 		008BBF6E19D91D7700BFE785 /* favorite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorite.png; sourceTree = "<group>"; };
 		008BBF6F19D91D7700BFE785 /* favorite_hover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorite_hover.png; sourceTree = "<group>"; };
 		008BBF7019D91D7700BFE785 /* favorite_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorite_on.png; sourceTree = "<group>"; };
-		008BBF7719DBC4FD00BFE785 /* launchScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchScreen.png; sourceTree = "<group>"; };
+		008BBF7719DBC4FD00BFE785 /* launchScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = launchScreen.png; path = ../launchScreen.png; sourceTree = "<group>"; };
 		00ED02AF19E0757800C3A8E6 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		39FA28BD678C446EAC0A41E7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		54B0FE4A06F64621A2EAD213 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -138,6 +138,7 @@
 			children = (
 				0026168319D770A900AD1FCA /* AppDelegate.swift */,
 				0026168A19D770A900AD1FCA /* Images.xcassets */,
+				008BBF7719DBC4FD00BFE785 /* launchScreen.png */,
 				0026168C19D770A900AD1FCA /* LaunchScreen.xib */,
 				0026168119D770A900AD1FCA /* Supporting Files */,
 			);
@@ -203,7 +204,6 @@
 		008BBF5719D7DFA300BFE785 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				008BBF7719DBC4FD00BFE785 /* launchScreen.png */,
 				008BBF6B19D91D7700BFE785 /* retweet_hover.png */,
 				008BBF6C19D91D7700BFE785 /* reply.png */,
 				008BBF6D19D91D7700BFE785 /* reply_hover.png */,
